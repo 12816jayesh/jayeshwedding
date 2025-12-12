@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .invitation-container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '❤️';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header p {
+            color: #fff;
+            font-size: 1.2rem;
+            font-style: italic;
+            animation: slideDown 1s ease-out 0.3s backwards;
+        }
+
+        .content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        /* Couple Images Section */
+        .couple-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 30px 0;
+            position: relative;
+            animation: fadeIn 1s ease-out 0.5s backwards;
+        }
+
+        .bride-image, .groom-image {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            animation: floatUpDown 3s ease-in-out infinite;
+        }
+
+        .bride-image {
+            animation-delay: 0s;
+        }
+
+        .groom-image {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            filter: drop-shadow(0 15px 30px rgba(245, 87, 108, 0.4));
+            transition: all 0.4s ease;
+        }
+
+        .image-wrapper:hover {
+            filter: drop-shadow(0 20px 40px rgba(245, 87, 108, 0.6));
+            transform: scale(1.05);
+        }
+
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
+            border-radius: 50%;
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .couple-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            clip-path: circle(50% at 50% 50%);
+            box-shadow: 
+                0 0 0 10px rgba(245, 87, 108, 0.1),
+                0 0 0 20px rgba(245, 87, 108, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .couple-image:hover {
+            clip-path: circle(48% at 50% 50%);
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+            white-space: nowrap;
+        }
+
+        .heart-divider {
+            font-size: 2.5rem;
+            color: #f5576c;
+            animation: heartBeat 1.5s infinite;
+            filter: drop-shadow(0 5px 10px rgba(245, 87, 108, 0.3));
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.2);
+            }
+            20%, 40% {
+                transform: scale(1.1);
+            }
+        }
+
+        .couple-names {
+            font-size: 3rem;
+            color: #f5576c;
+            margin: 40px 0 20px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f5576c, transparent);
+            margin: 20px auto;
+            animation: expandWidth 1s ease-out 1s backwards;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100px;
+            }
+        }
+
+        .invitation-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 1.2s backwards;
+        }
+
+        .details {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            animation: slideUp 1s ease-out 1.4s backwards;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-item {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .detail-item::before {
+          
+            font-size: 1.5rem;
+        }
+
+        .detail-item strong {
+            color: #f5576c;
+            margin-right: 5px;
+        }
+
+        .countdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            animation: fadeIn 1s ease-out 1.6s backwards;
+        }
+
+        .countdown h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: scale(1.1);
+        }
+
+        .time-unit .number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-unit .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .rsvp-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1.8s backwards;
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        .rsvp-button:active {
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            animation: fadeIn 1s ease-out 2s backwards;
+        }
+
+        /* Music Control Button */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 2s backwards;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        .music-control svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .music-control.playing {
+            animation: musicPulse 1s infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-control {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .music-control svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 2rem;
+            animation: floatUp 10s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: -50px;
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                bottom: 110%;
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .couple-images {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .bride-image, .groom-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .couple-names {
+                font-size: 2.2rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .time-unit {
+                min-width: 70px;
+                padding: 12px 15px;
+            }
+
+            .time-unit .number {
+                font-size: 1.5rem;
+            }
+
+            .rsvp-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .couple-images {
+                gap: 20px;
+            }
+
+            .bride-image, .groom-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .heart-divider {
+                font-size: 2rem;
+            }
+
+            .couple-names {
+                font-size: 1.8rem;
+            }
+
+            .invitation-text {
+                font-size: 1rem;
+            }
+
+            .countdown-timer {
+                gap: 10px;
+            }
+
+            .time-unit {
+                min-width: 60px;
+                padding: 10px;
+            }
+
+            .time-unit .number {
+                font-size: 1.3rem;
+            }
+
+            .time-unit .label {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a8a7c9f9e.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <button class="music-control playing" id="musicToggle" onclick="toggleMusic()">
+        <svg id="playIcon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
+    </button>
+
+    <div class="floating-hearts" id="heartsContainer"></div>
+
+    <div class="invitation-container">
+        <div class="header">
+            <h1>You're Invited!</h1>
+            <p>To celebrate our special day</p>
+        </div>
+
+        <div class="content">
+            <!-- Couple Images Section -->
+            <div class="couple-images">
+                <div class="bride-image">
+                    <div class="image-wrapper">
+                        <img src="imges/mohini_eng.jpeg" alt="Bride" class="couple-image">
+                        <div class="image-label">Bride</div>
+                    </div>
+                </div>
+
+                <div class="heart-divider">💕</div>
+
+                <div class="groom-image">
+                    <div class="image-wrapper">
+                        <img src="imges/jayesh_eng.jpeg" alt="Groom" class="couple-image">
+                        <div class="image-label">Groom</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="couple-names">
+                Jayesh & Mohini
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="invitation-text">
+                We joyfully invite you to share in our happiness as we exchange our vows and begin our journey together as husband and wife.
+            </p>
+
+            <div class="details">
+                <div class="detail-item">
+                    <strong>Date:</strong> February 25, 2026
+                </div>
+                <div class="detail-item">
+                    <strong>Time:</strong> 12:35 PM
+                </div>
+                <div class="detail-item">
+                    <strong>Venue:</strong> Laxmi Nagar At-post Vivara BK,Raver
+                </div>
+            </div>
+
+            <div class="countdown">
+                <h3>Countdown to Our Big Day</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <span class="number" id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="rsvp-button" onclick="handleRSVP()">RSVP Now</button>
+        </div>
+
+        <div class="footer">
+            We can't wait to celebrate with you! ❤️
+        </div>
+    </div>
+
+    <script>
+        // Background Music Control
+        const music = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        // Auto-play music when page loads
+        window.addEventListener('load', function() {
+            // Attempt to play music automatically
+            music.play().catch(function(error) {
+                // If autoplay is blocked, show play button
+                console.log('Autoplay blocked. User interaction required.');
+                musicToggle.classList.remove('playing');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            });
+        });
+
+        // Toggle music play/pause
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicToggle.classList.add('playing');
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                music.pause();
+                musicToggle.classList.remove('playing');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // Try to play on first user interaction (fallback for autoplay restrictions)
+        document.addEventListener('click', function initMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    musicToggle.classList.add('playing');
+                    pauseIcon.style.display = 'block';
+                    playIcon.style.display = 'none';
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', initMusic);
+        }, { once: true });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2026-02-25T12:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                document.querySelector('.countdown').innerHTML = '<h3>The Big Day is Here! 🎉</h3>';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Floating Hearts Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 2000);
+
+        // Create initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 400);
+        }
+
+        // RSVP Button Handler
+        function handleRSVP() {
+            alert('Thank you for your RSVP! 💕\n\nWe look forward to celebrating with you!');
+        }
+
+        // Add parallax effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
